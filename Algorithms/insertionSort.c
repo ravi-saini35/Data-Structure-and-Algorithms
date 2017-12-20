@@ -1,17 +1,16 @@
 /*
-File Name : improvisedBubbleSort.c
-Purpose : improved bubble sort
+File Name : insertionSort.c
+Purpose : To demonstrate insertion sort algorithm
 Author: Gautam Mishra
 Date: 20/12/2017
 */
 
-//If number of swaps in a pass is zero the there is no need to proceed further
 #include<stdio.h>
 #define MAX 100
 
 int main()
 {
-  int a[MAX], i, j, temp, n, swap;
+  int a[MAX], i, j, temp, n;
   printf("Enter the number of elements:\t");
   scanf("%d", &n);
 
@@ -21,18 +20,11 @@ int main()
   }
 
   //Sorting starts here
-  for(i=n-2; i>=0; i--){
-    swap=0;
-    for(j=0; j<=i; j++){
-      if(a[j]>a[j+1]){
-        temp = a[j];
-        a[j] = a[j+1];
-        a[j+1] = temp;
-        swap++;
-      }
-    }
-    if(swap==0)
-      break;
+  for(i=1; i<n; i++){
+    temp = a[i];
+    for(j=i-1; j>=0 && a[j]>temp; j--)
+      a[j+1] = a[j];
+    a[j+1] = temp;
   } //sorting ends
 
 
